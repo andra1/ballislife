@@ -1,0 +1,28 @@
+<% movie = Movie.find_by(id: params["id"]) %>
+
+<div class="row">
+  <div class="col-sm-6">
+    <h1><%= movie.title %> (<%= movie.year %>)</h1>
+    <% if movie.director.present? %>
+      <h3 class="text-muted">Directed By: <%= movie.director.name %></h3>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+
+  <div class="col-sm-6">
+    <%= image_tag movie.poster_url %>
+  </div>
+  <div class="col-sm-6">
+    <% if movie.director.present? %>
+      <p>Movies by this director:</p>
+
+      <ul>
+        <% movie.director.movies.each do |movie| %>
+          <li><%= link_to movie.title, "/movies/#{movie.id}" %></li>
+        <% end %>
+      </ul>
+
+    <% end %>
+  </div>
+</div>
