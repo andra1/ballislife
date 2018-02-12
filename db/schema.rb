@@ -19,16 +19,16 @@ ActiveRecord::Schema.define(version: 0) do
   end
 
   create_table "movies", force: :cascade do |t|
-    t.text "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer "year"
-    t.text "poster_url"
     t.text "imdb_key"
     t.integer "runtime"
+    t.integer "year"
     t.text "mpaa"
+    t.text "title"
+    t.text "poster_url"
     t.text "plot"
     t.integer "director_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["director_id"], name: "index_movies_on_director_id"
   end
 
