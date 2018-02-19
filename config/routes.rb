@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "/games/new" => 'games#new'
   post "/games" => 'games#create'
 
+  get "games/show" => 'games#show'
+
   get "/movies/:id" => 'movies#show'
   delete "/movies/:id" => 'movies#destroy'
   get "/movies/:id/edit" => 'movies#edit'

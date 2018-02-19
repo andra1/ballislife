@@ -20,13 +20,19 @@
         <th>Location</th>
         <th>Name</th>
         <th>Participants</th>
-        <th>Distance</th>
-        <th>Details</th>
+        <th>Start_Time</th>
+        <th>End_Time</th>
+        <th> Actions </th>
       </tr>
     </thead>
     <tbody>
-      
-      <th> Getting new games</th>
+      <% Game.all.each do |game| %>
+        <tr>
+          <td><%= link_to game.location, "/games/#{game.id}" %></td>
+          <td> <%= game.name %> </td>
+          <td> <%= game.max_players %> </td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
