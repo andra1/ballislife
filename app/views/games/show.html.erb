@@ -1,17 +1,21 @@
-<div style="overflow:hidden;">
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-8">
-                <div id="datetimepicker12"></div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript">
-        $(function () {
-            $('#datetimepicker12').datetimepicker({
-                inline: true,
-                sideBySide: true
-            });
-        });
-    </script>
+<% game = Game.find_by(id: params["id"]) %>
+
+<h1>Here are the details for game <%= game.name %></h1>
+
+<div class="row">
+  <div class="col-sm-4">
+
+    <%= form_tag "/games/#{game.id}", method: "patch" do %>
+
+      <p>Name: <input name="name" type="text" autofocus class="form-control"></p>
+      <p>Enter Address of Venue for Game: <input name="location" type="text" autofocus class="form-control"></p>
+      <p> How many players do you want in this game?<input name="max_players" type="text" value="1-10" autofocus class="form-control"></p>
+      <p> Enter Game Start Date and Time<input name="start_time" type="text" value="02/25/2018 12:30pm" autofocus class="form-control"> </p> 
+      <p> Enter Game End Date and Time<input name="end_time" type="text" value="02/25/2018 3:30pm" autofocus class="form-control"> </p> 
+
+      <button class="btn btn-primary">Update Game</button>
+
+    <% end %>
+
+  </div>
 </div>

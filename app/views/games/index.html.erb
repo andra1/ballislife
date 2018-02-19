@@ -33,6 +33,7 @@
           <td> <%= game.max_players %> </td>
           <td> <%= game.start_time %> </td>
           <td> <%= game.end_time %> </td>
+          <td> <%= link_to "Delete Game", "/games/#{game.id}", method: "delete" %>
         </tr>
       <% end %>
     </tbody>

@@ -27,7 +27,6 @@ class GamesController < ApplicationController
   	game.delete
   	redirect_to "/games"
   	
-
   end
 
 
