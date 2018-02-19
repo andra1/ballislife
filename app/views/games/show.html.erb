@@ -5,7 +5,6 @@
 <div class="row">
   <div class="col-sm-4">
 
-    <%= form_tag "/games/#{game.id}", method: "patch" do %>
 
       <p>Name: <input name="name" type="text" autofocus class="form-control"></p>
       <p>Enter Address of Venue for Game: <input name="location" type="text" autofocus class="form-control"></p>
@@ -13,7 +12,6 @@
       <p> Enter Game Start Date and Time<input name="start_time" type="text" value="02/25/2018 12:30pm" autofocus class="form-control"> </p> 
       <p> Enter Game End Date and Time<input name="end_time" type="text" value="02/25/2018 3:30pm" autofocus class="form-control"> </p> 
 
-      <button class="btn btn-primary">Update Game</button>
 
     <% end %>
 
