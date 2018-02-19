@@ -12,24 +12,43 @@
 
 ActiveRecord::Schema.define(version: 0) do
 
-  create_table "directors", force: :cascade do |t|
+  create_table "games", force: :cascade do |t|
     t.text "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "venue_id"
+    t.integer "user_id"
+    t.integer "max_players"
+    t.integer "current_players"
+    t.text "location"
+    t.index ["user_id"], name: "index_games_on_user_id"
+    t.index ["venue_id"], name: "index_games_on_venue_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.text "email"
+    t.text "password"
+    t.text "first_name"
+    t.text "last_name"
+    t.date "date_of_birth"
+    t.text "phone_number"
+    t.text "skill_level"
+    t.integer "games_played"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "movies", force: :cascade do |t|
-    t.text "imdb_key"
-    t.integer "runtime"
-    t.integer "year"
-    t.text "mpaa"
-    t.text "title"
-    t.text "poster_url"
-    t.text "plot"
-    t.integer "director_id"
+  create_table "venues", force: :cascade do |t|
+    t.text "name"
+    t.text "city"
+    t.text "address"
+    t.text "zipcode"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["director_id"], name: "index_movies_on_director_id"
   end
 
 end
