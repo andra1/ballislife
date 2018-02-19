@@ -31,6 +31,8 @@
           <td><%= link_to game.location, "/games/#{game.id}" %></td>
           <td> <%= game.name %> </td>
           <td> <%= game.max_players %> </td>
+          <td> <%= game.start_time %> </td>
+          <td> <%= game.end_time %> </td>
         </tr>
       <% end %>
     </tbody>
