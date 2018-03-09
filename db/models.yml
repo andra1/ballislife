@@ -2,7 +2,7 @@
 
 User
   email: text
-  password: text
+  password_digest: text
   first_name: text
   last_name: text
   date_of_birth: date

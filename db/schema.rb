@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "users", force: :cascade do |t|
     t.text "email"
-    t.text "password"
     t.text "first_name"
     t.text "last_name"
     t.date "date_of_birth"
@@ -38,6 +37,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer "games_played"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text "password_digest"
   end
 
   create_table "venues", force: :cascade do |t|

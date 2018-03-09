@@ -1,0 +1,11 @@
+<div class="row">
+
+	<div class="col-9">
+
+		<% flash.each do |key,value| %>
+		    <% if key == 'notice' %>
+		      <h1 id="notice"> <%= value %> </h1>
+		    <% end %>
+		  <% end %>
+	</div>
+</div>

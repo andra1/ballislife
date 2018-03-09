@@ -1,0 +1,29 @@
+<h1>Edit Your Profile</h1>
+
+<div class="row">
+  <div class="col-sm-6">
+
+    <%= form_tag "/users/edit", method: "patch" do %>
+
+      <% user = User.find_by(id: session[:user_id]) %>        
+      <p>First Name: <input name="first_name" value= "<%=user.first_name%>" type="text" autofocus class="form-control"> </p>
+      <p>Last Name: <input name="last_name" value="<%=user.last_name %>" type="text" class="form-control"> </p>
+      <p>Email: <input name="email" value="<%=user.email %>" type="text" autofocus class="form-control"></p>
+      <p> Date of Birth:
+       <input class="form-control" id="date" name="date_of_birth" value="<%=user.date_of_birth %>" placeholder="MM/DD/YYYY" type="text"></p>
+
+      <p>Phone Number: <input name="phone_number" type="text" value="<%=user.phone_number %>"autofocus class="form-control"></p>
+      <p>Skill Level: <select name="skill_level">
+          <option value="basic">Basic</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+        <br><br>
+  		</p>
+
+      <button class="btn btn-primary">Make Changes to Your Profile</button>
+
+    <% end %>
+
+  </div>
+</div>

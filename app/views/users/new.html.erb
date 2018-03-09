@@ -1,0 +1,35 @@
+<h1>Sign Up for a Ball is Life Profile!</h1>
+
+<div class="row">
+  <div class="col-sm-6">
+
+    <%= form_tag "/users" do %>
+
+      <% flash.each do |key, value| %>
+        <div class = "alert alert- <%= key %>" ><%= value %></div>
+      <% end %>
+        
+      <p>First Name: <input name="first_name" type="text" autofocus class="form-control"> </p>
+      <p>Last Name: <input name="last_name" type="text" class="form-control"> </p>
+      <p>Email: <input name="email" type="text" autofocus class="form-control"></p>
+      <p>Password: <input name="password" type="text" autofocus class="form-control"></p>
+      <p> Date of Birth:
+       <input class="form-control" id="date" name="date_of_birth" placeholder="MM/DD/YYYY" type="text"></p>
+
+      <p>Phone Number: <input name="phone_number" type="text" autofocus class="form-control"></p>
+      <p>Skill Level: <select name="skill_level">
+          <option value="basic">Basic</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+        <br><br>
+  		</p>
+
+      <button class="btn btn-primary">Complete Registration!</button>
+
+    <% end %>
+
+  </div>
+</div>
+
+

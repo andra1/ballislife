@@ -1,0 +1,16 @@
+<h1>My User Profile</h1>
+<hr>
+
+	<% user = User.find_by(id: session[:user_id]) %>
+	<p> First Name: <%= user.first_name %> </p>
+	<p> Last Name: <%= user.last_name %> </p>
+	<p> Date of Birth: <%= user.date_of_birth %> </p>
+	<p> Phone Number: <%= user.phone_number %> </p>
+	<p> Skill Level: <%= user.skill_level %> </p>
+	<p> Games Played: <%= user.games_played %> </p>	
+	<p> Email: <%= user.email %></p>
+
+	<p class="button"> <%=link_to "Edit your Profile", "/users/edit/#{session[:user_id]}"%> </p>
+</hr
+
+

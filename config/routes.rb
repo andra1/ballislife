@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'games#index'
 
+  get "/" => "games#home"
   get "/games" => "games#index"
-  get "/games/:id" => "games#show"
-
   get "/games/new" => 'games#new'
+  get "/games/:id" => "games#show"
   post "/games" => 'games#create'
 
   get "/games/:id/edit" => 'games#edit'
@@ -13,6 +12,22 @@ Rails.application.routes.draw do
 
   delete "/games/:id" => 'games#destroy'
 
+  get "/users" => 'users#new'
+  get "/users/new" => 'users#new'
+  post "/users" => 'users#create'
+  get "/users/thanks" => 'users#thanks'
+  get "/users/:id" => 'users#show'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "/users/edit/:id" => 'users#edit_user'
+  patch "/users/edit" => 'users#update'
+
+  get "/players" => 'users#players'
+  
+
+  get "/sessions/login" => 'sessions#login'
+  post "/sessions" => 'sessions#create'
+  get "/logout" => 'sessions#destroy'
+
+
+
 end

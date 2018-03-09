@@ -1,0 +1,14 @@
+<h1> Please Enter Your User Profile Information </h1>
+
+<div class="row">
+  <div class="col-sm-6">
+
+  	<%= form_tag "/sessions" do %>
+
+	  	<p>Email: <input name="email" type="text" autofocus class="form-control"></p>
+	    <p>Password: <input name="password" type="text" autofocus class="form-control"></p>
+	    <button class="btn btn-primary">Sign In!</button>
+	 <% end %>
+
+  </div>
+</div>
