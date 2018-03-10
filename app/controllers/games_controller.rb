@@ -1,12 +1,13 @@
 class GamesController < ApplicationController
 
   def create
+
     Game.create :name => params["name"],
-                 :location => params["location"],
                  :max_players => params["max_players"],
                  :start_time => params["start_time"],
-                 :end_time => params["end_time"],
-                 :user_id => session[:user_id]
+                 :creator_id => session[:user_id],
+                 :venue_id => params["location"].to_i
+    flash[:notice] = "Successfully added new game to schedule!"            
     redirect_to "/games"
   end
 

@@ -1,4 +1,6 @@
 <% game = Game.find_by(id: params["id"]) %>
+<% value = game.id %>
+<% venue = Venue.find_by(id: game.venue_id) %>
 
 <h1>Here are the details for game <%= game.name %></h1>
 
@@ -6,11 +8,27 @@
   <div class="col-sm-4">
 
 
-      <p>Name: <input name="name" type="text" autofocus class="form-control"></p>
-      <p>Enter Address of Venue for Game: <input name="location" type="text" autofocus class="form-control"></p>
-      <p> How many players do you want in this game?<input name="max_players" type="text" value="1-10" autofocus class="form-control"></p>
-      <p> Enter Game Start Date and Time<input name="start_time" type="text" value="02/25/2018 12:30pm" autofocus class="form-control"> </p> 
-      <p> Enter Game End Date and Time<input name="end_time" type="text" value="02/25/2018 3:30pm" autofocus class="form-control"> </p> 
+      <p>Name: <%= game.name %></p>
+      <p>Venue Name: <%=venue.name %></p>
+      <p> Max Players Allowed In Game: <%=game.max_players %></p>
+      <p> Game Start Date and Time:  <%=game.start_time%></p> 
+      <p> Current Players in the Game: </p>
+      <% all_players = User.joins(:players).where(players: {game_id:game.id}) %>
+      <% valid = Array.new %>
+      <% all_players.each do |athlete| %>
+      <% valid.push(athlete.id) %>
+      <ul>
+      	<li>  <%=athlete.first_name%> <%=athlete.last_name%> </li>
+      </ul>	
+      <% end %>
 
+      <% if session[:user_id] != nil && valid.include?(session[:user_id]) %>
+
+      	<%= form_tag "/players/#{value}", method:"delete" do %>
+      		<button class="btn btn-primary">Remove Yourself From This Game</button>
+      	<% end %>
+      <% end %>
+      
+    
   </div>
 </div>

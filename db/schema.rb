@@ -16,23 +16,28 @@ ActiveRecord::Schema.define(version: 0) do
     t.text "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "start_time"
-    t.datetime "end_time"
+    t.text "start_time"
     t.integer "venue_id"
-    t.integer "user_id"
     t.integer "max_players"
     t.integer "current_players"
-    t.text "location"
-    t.index ["user_id"], name: "index_games_on_user_id"
+    t.integer "creator_id"
+    t.index ["creator_id"], name: "index_games_on_creator_id"
     t.index ["venue_id"], name: "index_games_on_venue_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["game_id"], name: "index_players_on_game_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.text "email"
     t.text "first_name"
     t.text "last_name"
-    t.date "date_of_birth"
-    t.text "phone_number"
     t.text "skill_level"
     t.integer "games_played"
     t.datetime "created_at"
@@ -45,10 +50,9 @@ ActiveRecord::Schema.define(version: 0) do
     t.text "city"
     t.text "address"
     t.text "zipcode"
-    t.float "latitude"
-    t.float "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text "state"
   end
 
 end

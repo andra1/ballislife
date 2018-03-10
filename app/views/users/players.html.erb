@@ -18,7 +18,7 @@
 		    </tr>
 		  </thead>
 	<% i = 1 %>
-	<% User.all.order("games_played").limit(10).each do |user| %>
+	<% User.all.order(games_played: :desc).limit(10).each do |user| %>
 	
 		  <tbody>
 		  	<tr class="table-light">

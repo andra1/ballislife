@@ -18,7 +18,7 @@
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Ball is Life</a>
+      <a class="navbar-brand" href="/">Ball is Life</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,7 +36,7 @@
             <li class="nav-item"> <a class="nav-link"><%=link_to "My Account", "/users/#{session[:user_id]}"%> </a> </li>
             <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
           <% else %>
-            <a href="/users/new" class="btn btn-outline-success my-2 my-sm-0" type="button">Sign Up</a>
+            <a href="/users" class="btn btn-outline-success my-2 my-sm-0" type="button">Sign Up</a>
             <a href= "/sessions/login" class="btn btn-outline-success my-2 my-sm-0" type="button">Sign In</a>
           <% end %>
 

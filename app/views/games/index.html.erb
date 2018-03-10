@@ -22,23 +22,33 @@
       <tr>
         <th>Location</th>
         <th>Name</th>
-        <th>Participants</th>
-        <th>Start_Time</th>
-        <th>End_Time</th>
-        <th> Actions </th>
+        <th>Max Participants</th>
+        <th>Start Time</th>
+        <th> Join </th>
+        <th> Delete </th>
       </tr>
     </thead>
     <tbody>
       <% Game.all.each do |game| %>
         <tr>
-          <td><%= link_to game.location, "/games/#{game.id}" %></td>
+          <% arena = Venue.find_by(id: game.venue_id) %>
+          <td><%= link_to arena.name, "/games/#{game.id}" %></td>
           <td> <%= game.name %> </td>
           <td> <%= game.max_players %> </td>
           <td> <%= game.start_time %> </td>
-          <td> <%= game.end_time %> </td>
           <% if session[:user_id] != nil %>
+            <% players = Player.where(game_id: game.id).all %>
+            <% actual = [] %>
+            <% players.each do |player| %>
+                <% actual.push(player.id) %>
+            <% end %>
+                <td> 
+                  <%= link_to "Join Game", "/players/#{game.id}", method:"get" %>
+                </td>
+          <% end %>
+              
+          <% if session[:user_id] != nil && game.creator_id == session[:user_id] %>
             <td>  <%= link_to "Delete", "/games/#{game.id}", method: "delete" %> </td>
-          <% else %>
           <% end %>
         </tr>
 

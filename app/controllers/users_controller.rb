@@ -20,23 +20,21 @@ class UsersController < ApplicationController
   end
 
   def create
-
     @user = User.new
     @user.email = params["email"]
     @user.password = params["password"]
     @user.first_name = params["first_name"]
     @user.last_name = params['last_name']
-    @user.date_of_birth = params["date_of_birth"]
-    @user.phone_number = params["phone_number"]
     @user.skill_level = params["skill_level"]
+    @user.games_played = 0
+    @user.save
 
     if @user.save
-      flash[:notice] = "Thanks for signing up! #{@user.first_name}"
-      redirect_to "/users/thanks"
+      flash[:notice] = "Thanks for signing up! #{@user.first_name}, Please Sign In with your information to confirm profile"
+      redirect_to "/sessions/login"
     else
-      flash[:error] = "**Error in registration, please fill out all required fields correctly**"
-
-      render 'new'
+      flash[:notice] = "**Error in registration, please fill out all required fields correctly**"
+      redirect_to '/users'
     end
   end
 
